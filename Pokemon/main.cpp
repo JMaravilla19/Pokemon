@@ -5,19 +5,27 @@ using namespace std;
 
 
 //Enum for First Pokemon Choice
-enum PokemonChoice
-{
+enum class PokemonChoice{
 	Charmander,
 	Bulbasaur,
 	Squirtle,
 	InvalidChoice
 };
 
+//Enum Type of Pokemon
+enum class PokemonType {
+	Fire,
+	Electric,
+	Water,
+	Earth,
+	Normal
+};
+
 int main() {
 
 
 	//Variables to store name and pokemon choice
-	PokemonChoice chosen_pokemon = InvalidChoice;
+	PokemonChoice chosen_pokemon = PokemonChoice::InvalidChoice;
 	string player_name;
 	int choice;
 
@@ -49,37 +57,37 @@ int main() {
 
 	switch (choice) {
 	case 1:
-		chosen_pokemon = Charmander;
+		chosen_pokemon = PokemonChoice::Charmander;
 		break;
 
 	case 2: 
-		chosen_pokemon = Bulbasaur;
+		chosen_pokemon = PokemonChoice::Bulbasaur;
 		break;
 
 	case 3:
-		chosen_pokemon = Squirtle;
+		chosen_pokemon = PokemonChoice::Squirtle;
 		break;
 
 	default:
-		chosen_pokemon = InvalidChoice;
+		chosen_pokemon = PokemonChoice::InvalidChoice;
 		break;
 	}
 
 	switch (chosen_pokemon){
-	case Charmander:
+	case PokemonChoice::Charmander:
 		cout << "Professor Oak: You chose Charmander! A Fiery Choice, " << player_name << "." << endl;
 		break;
 
-	case Bulbasaur:
+	case PokemonChoice::Bulbasaur:
 		cout << "Professor Oak: You chose Bulbasaur! A wise Choice, " << player_name << "." << endl;
 		break;
 
-	case Squirtle:
+	case PokemonChoice::Squirtle:
 		cout << "Professor Oak: You chose Squirtle! A Cool Choice, " << player_name << "." << endl;
 		break;
 
 	default:
-		chosen_pokemon = Charmander; //Default option if invalid input.
+		chosen_pokemon = PokemonChoice::Charmander; //Default option if invalid input.
 		cout << "rofessor Oak: Hmm, that doesn't seem right. Let me choose for you " << player_name << "..." << endl;
 		cout << "Professor Oak: Just kidding! Let's go with Charmander, the fiery dragon in the making!"<< endl;
 		break;
@@ -87,8 +95,8 @@ int main() {
 
 	//Concluding the FIRST chapter
 	cout << "Professor Oak: "
-		<< (chosen_pokemon == Charmander ? "Charmander" :
-			chosen_pokemon == Bulbasaur ? "Bulbasaur" : "Squirtle") << " and you, " << player_name << " Will be best friends" << endl;
+		<< (chosen_pokemon == PokemonChoice::Charmander ? "Charmander" :
+			chosen_pokemon == PokemonChoice::Bulbasaur ? "Bulbasaur" : "Squirtle") << " and you, " << player_name << " Will be best friends" << endl;
 	
 	cout << "Professor Oak: Your journey begins now! Get ready to explore the vast world of Pokemon!" << endl;
 
