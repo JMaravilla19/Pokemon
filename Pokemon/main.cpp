@@ -30,7 +30,9 @@ public:
 
 	//two constructors
 	Pokemon() {
-
+		name = "Pikachu";
+		type = PokemonType::ELECTRIC;
+		health = 50;
 	}
 
 	Pokemon(string p_name, PokemonType p_type, int p_health) {
@@ -39,10 +41,23 @@ public:
 		health = p_health;
 	}
 
+	//Deep copy constructor
+	Pokemon(const Pokemon& other) {
+		name = other.name;
+		type = other.type;
+		health = other.health;
+
+		cout << "A new Pokemon has been copied from " << other.name << endl;
+	}
+
 	void attack() {
 		//random message to check it works.
 		cout << "Attacks with powerful move!" << endl;
 
+	}
+
+	~Pokemon() {
+		cout << name << " is getting released in the wild...bye.." << endl;
 	}
 };
 
@@ -52,6 +67,20 @@ public:
 	//atributes
 	string name;
 	Pokemon chosenPokemon;
+
+	//Default constructor
+	Player() {
+		name = "Trainer";
+		chosenPokemon = Pokemon();
+
+		cout << "A new player named '" << name << "' has been created." << endl;
+	}
+
+	//Parametized constructor
+	Player(string p_name, Pokemon p_chosenPokemon ) {
+		name = p_name;
+		chosenPokemon = p_chosenPokemon;	
+	}
 
 
 	//Method to choose pokemon
@@ -81,6 +110,12 @@ class ProfessorOak {
 	//Attributes:
 public:
 	string name;
+
+
+	//constructor
+	ProfessorOak(string p_name) {
+		name = p_name;
+	}
 
 	//Method to greet the player
 	void greetPlayer(Player& player) {
@@ -123,24 +158,46 @@ public:
 int main() {
 
 
-	//Creating Objects of Professor, initial pokemon and player
-	ProfessorOak professor;
-	Pokemon placeholderPokemon;
-	Player player;
+	ProfessorOak professor = ProfessorOak("Professor Oak");
+	
 
-	//Assigning values to initial pokemon
-	placeholderPokemon.name = "Pikachu";
-	placeholderPokemon.health = 40;
-	placeholderPokemon.type = PokemonType::ELECTRIC;
+	// Task 1, create with default constructor.
+	Pokemon defaultPokemon;
+
+	// Task 1.2 create charmander
+	
+		Pokemon charmander = Pokemon("Charmilion", PokemonType::FIRE, 100);
+
+		// Task 1.3 print values:
+		cout << "Name: " << charmander.name << endl;
+		cout << "Health: " << charmander.health << endl;
+
+		cout << "Name: " << defaultPokemon.name << endl;
+		cout << "Health: " << defaultPokemon.health << endl;
+	
 
 
-	//Values to player
-	player.name = "Trainer";
+	//Task 2 test the copy constructor
+	Pokemon bulbasaur("Bulbasaur", PokemonType::GRASS, 100); // Create Pokemon
+	Pokemon bulbasaurCopy = bulbasaur;
 
-	//professor
-	professor.name = "Professor Oak";
+	cout << "Original Pokemon Health: " << bulbasaur.health << "\n";
+	cout << "Copied Pokemon Health: " << bulbasaurCopy.health << "\n";
+
+	// Task 2.1 modify the copy
+	bulbasaurCopy.health = 80;
+	cout << "After Modification:\n";
+	cout << "Original Pokemon Health: " << bulbasaur.health << "\n";
+	cout << "Copied Pokemon Health: " << bulbasaurCopy.health << "\n";
+
+	// Task 3: Test the destructor
+	{
+		Pokemon squirtle("Squirtle", PokemonType::WATER, 100); // Pokemon will be destroyed at the end of this scope
+	} // Destructor will be called here
+
 
 	//Greet the player and offer choices:
+	Player player("Alicis", charmander);
 	professor.greetPlayer(player);
 	professor.offerPokemonChoices(player);
 
