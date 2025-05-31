@@ -28,7 +28,7 @@ enum class PokemonChoice {
 
 //Enum Type of Pokemon
 enum class PokemonType {
-	FIRE = 1,
+	FIRE = 1 ,
 	GRASS,
 	WATER,
 	ELECTRIC
@@ -43,9 +43,9 @@ public:
 
 	//two constructors
 	Pokemon() {
-		name = "Pikachu";
+		name = "Pikachu" ;
 		type = PokemonType::ELECTRIC;
-		health = 10;
+		health = 100;
 	}
 
 	Pokemon(string p_name, PokemonType p_type, int p_health) {
@@ -232,6 +232,79 @@ public:
 
 };// Class Professor
 
+//GameLoop Function
+void gameLoop(Player& player) {
+
+	bool keepPlaying{ true };
+	int choice{ 0 };
+
+
+
+	while (keepPlaying) {
+		clearConsole();
+		cout << "============================" << endl;
+		cout << "What to do now - " << player.name << endl;
+		cout << "============================" << endl;
+		cout << "1.- Battle Wild Pokemon" << endl;
+		cout << "2.- Visit PokeCenter" << endl;
+		cout << "3.- Challenge Gyms." << endl;
+		cout << "4.- Enter Pokemon League." << endl;
+		cout << "5.- Quit." << endl;
+
+		cout << endl;
+		cout << "Enter Number's option: ";
+		cin >> choice;
+
+		switch (choice){
+			case 1:
+				clearConsole();
+				cout << "You explore searching pokemons but ALL are gone!! (Actually game is not finished cof...cof...)" << endl;
+				waitForEnter();
+				break;
+
+			case 2:
+				clearConsole();
+				cout << "You go to the PokeCenter but is closed...nurse Joy is on a Date with Professor Oak! O_O!" << endl;
+				waitForEnter();
+				break;
+
+			case 3:
+				clearConsole();
+				cout << "You went to the wrong GYM and now you have to lift heavy weights...LIGHT WEIGHT BABY!!" << endl;
+				waitForEnter();
+				break;
+
+			case 4:
+				clearConsole();
+				cout << "You go to the Pokemon league and the guards stop you and laugh... looks like you need more than a " << player.chosenPokemon.name << endl;
+				waitForEnter();
+				break;
+
+			case 5:
+				clearConsole();
+				char quit;
+				cout << "Are you SURE you want to leave, " << player.name << "? (Y/N): ";
+				cin >> quit;
+
+				if (quit == 'Y' || quit == 'y') {
+					keepPlaying = false ;
+				}
+
+				break;
+
+		default:
+			clearConsole();
+			cout << "Not a valid option, champie." << endl;
+			waitForEnter();
+			break;
+		}//switch
+
+		waitForEnter();
+	}//while
+
+	cout << "Goodbye, " << player.name << "! Thanks for playing!" << endl;
+}
+
 int main() {
 
 
@@ -245,6 +318,8 @@ int main() {
 
 	//Explain main quest
 	professor.explainMainQuest(player);
+
+	gameLoop(player);
 
 	return 0;
 }
