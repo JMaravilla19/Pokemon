@@ -309,8 +309,8 @@ int main() {
 
 
 	ProfessorOak professor = ProfessorOak("Professor Oak");
-	Pokemon charmander("Charmander", PokemonType::FIRE, 100);
-	Player player("Ash", charmander);
+	Pokemon p1("Charmander", PokemonType::FIRE, 100);
+	Player player("Ash", p1);
 	
 	//Greet the player and offer choices:
 	professor.greetPlayer(player);
@@ -322,4 +322,4 @@ int main() {
 	gameLoop(player);
 
 	return 0;
-}
+#include "header.h"
