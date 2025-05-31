@@ -3,7 +3,20 @@
 
 using namespace std;
 
+//clear Console function
+void clearConsole() {
+	// Platform-specific clear console command
+#ifdef _WIN32
+	system("cls");
+#else
+	(void)system("clear");
+#endif
+}
 
+//Function to wait for 'Enter' from user
+void waitForEnter() {
+	cin.get();
+}
 
 //Enum for First Pokemon Choice
 enum class PokemonChoice {
@@ -32,7 +45,7 @@ public:
 	Pokemon() {
 		name = "Pikachu";
 		type = PokemonType::ELECTRIC;
-		health = 50;
+		health = 10;
 	}
 
 	Pokemon(string p_name, PokemonType p_type, int p_health) {
@@ -47,7 +60,7 @@ public:
 		type = other.type;
 		health = other.health;
 
-		cout << "A new Pokemon has been copied from " << other.name << endl;
+		//cout << "A new Pokemon has been copied from " << other.name << endl;
 	}
 
 	void attack() {
@@ -57,7 +70,7 @@ public:
 	}
 
 	~Pokemon() {
-		cout << name << " is getting released in the wild...bye.." << endl;
+		//cout << name << " is getting released in the wild...bye.." << endl;
 	}
 };
 
@@ -73,7 +86,7 @@ public:
 		name = "Trainer";
 		chosenPokemon = Pokemon();
 
-		cout << "A new player named '" << name << "' has been created." << endl;
+		//cout << "A new player named '" << name << "' has been created." << endl;
 	}
 
 	//Parametized constructor
@@ -82,6 +95,10 @@ public:
 		chosenPokemon = p_chosenPokemon;	
 	}
 
+	Player(const Player& other) {
+		name = other.name;
+		chosenPokemon = other.chosenPokemon;
+	}
 
 	//Method to choose pokemon
 	void choosePokemon(int choice) {
@@ -102,7 +119,12 @@ public:
 			break;
 		}
 
-		cout << "Player " << name << " chose " << chosenPokemon.name << endl;
+		waitForEnter();
+		cout << "========================================" << endl;
+		cout << name << " chose " << chosenPokemon.name << endl;
+		cout << chosenPokemon.name << " is now yours!" << endl;
+		cout << "========================================" << endl;
+		waitForEnter();
 	}
 };
 
@@ -121,9 +143,10 @@ public:
 	void greetPlayer(Player& player) {
 		//Professor Oak Introduction
 		cout << "Professor Oak: Hello! Welcome to the World of Pokemon!" << endl;
+		waitForEnter();
 		cout << "Professor Oak: My name is Professor Oak, people call me the Pokemon professor." << endl;
+		waitForEnter();
 		cout << "Professor Oak: First tell me, what's your name?" << endl;
-
 		//Player's name as input
 		cout << "-- Enter your name: ";
 		getline(cin, player.name);
@@ -137,11 +160,13 @@ public:
 		int choice;
 
 		//Presenting the Pokemon Choices	
+		clearConsole();
 		cout << "Professor Oak: Ah, " << player.name << ". What a nice name!" << endl;
+		waitForEnter();
 
-		cout << "Professor Oak: You must be excited to start your adventure, but first...your need a pokemon." << endl;
+		cout << "Professor Oak: You must be excited to start your adventure, but first...you need a pokemon." << endl;
+		waitForEnter();
 		cout << "Professor Oak: I have three Pokemon here with me:" << endl;
-
 		cout << "1.- Charmander - The fire type. A real hothead!" << endl;
 		cout << "2.- Bulbasaur - The grass type. Calm and collected!" << endl;
 		cout << "3.- Squirtle - The water type. Cool as a cucumber!" << endl;
@@ -153,57 +178,73 @@ public:
 
 
 	}
-};
+
+	void explainMainQuest(Player& player) {
+		clearConsole();
+		cout << endl;
+		cout << "Professor Oak: Oak-kay " << player.name << ",  I am about to explain you about your upcoming grand adventure." << endl;
+		waitForEnter();
+
+		cout << endl;
+		cout << "Professor Oak: You see, becoming a Pokemon Master is no easy feat. It takes courage, wisdom, and a bit of luck." << endl;
+		waitForEnter();
+
+		cout << endl;
+		cout << "Professor Oak: Your mission is to collect all the Pokemon Badges." << endl;
+		waitForEnter();
+
+		cout << endl;
+		cout << player.name << ": Wait... that sounds a lot like every other Pokemon game out there." << endl;
+		waitForEnter();
+
+		cout << endl;
+		cout << "Professor Oak:  Shhh! Don't break the fourth wall " << player.name << "! This is serious business." << endl;
+		waitForEnter();
+
+		cout << endl;
+		cout << "Professor Oak: To achieve this, you'll need to battle wild Pokemon, challenge gym leaders, and of course, keep your Pokemon healthy at the PokeCenter." << endl;
+		waitForEnter();
+		
+		cout << endl;
+		cout << "Professor Oak: Along the way, you'll capture new Pokemon to strengthen your team. Just remember there's a limit to how many Pokemon you can carry, so choose wisely!" << endl;
+		waitForEnter();
+
+		cout << endl;
+		cout << player.name << ": Sounds like a walk in the park... right?" << endl;
+		waitForEnter();
+
+		cout << endl;
+		cout << "Professor Oak: Hah! That's what they all say! But beware, young Trainer, the path to victory is fraught with challenges. And if you lose a battle... well, let's just say you'll be starting from square one." << endl;
+		cout << endl;
+		waitForEnter();
+
+		cout << "Professor Oak: So, what do you say? Are you ready to become the next Pokemon Champion?" << endl;
+		cout << endl;
+		waitForEnter();
+
+		cout << player.name << ": Ready as I'll ever be, Professor!" << endl;
+		cout << endl;
+		waitForEnter();
+
+		cout << "Professor Oak: That's the spirit! Now, your journey begins..." << endl;
+		waitForEnter();
+	}
+
+};// Class Professor
 
 int main() {
 
 
 	ProfessorOak professor = ProfessorOak("Professor Oak");
+	Pokemon charmander("Charmander", PokemonType::FIRE, 100);
+	Player player("Ash", charmander);
 	
-
-	// Task 1, create with default constructor.
-	Pokemon defaultPokemon;
-
-	// Task 1.2 create charmander
-	
-		Pokemon charmander = Pokemon("Charmilion", PokemonType::FIRE, 100);
-
-		// Task 1.3 print values:
-		cout << "Name: " << charmander.name << endl;
-		cout << "Health: " << charmander.health << endl;
-
-		cout << "Name: " << defaultPokemon.name << endl;
-		cout << "Health: " << defaultPokemon.health << endl;
-	
-
-
-	//Task 2 test the copy constructor
-	Pokemon bulbasaur("Bulbasaur", PokemonType::GRASS, 100); // Create Pokemon
-	Pokemon bulbasaurCopy = bulbasaur;
-
-	cout << "Original Pokemon Health: " << bulbasaur.health << "\n";
-	cout << "Copied Pokemon Health: " << bulbasaurCopy.health << "\n";
-
-	// Task 2.1 modify the copy
-	bulbasaurCopy.health = 80;
-	cout << "After Modification:\n";
-	cout << "Original Pokemon Health: " << bulbasaur.health << "\n";
-	cout << "Copied Pokemon Health: " << bulbasaurCopy.health << "\n";
-
-	// Task 3: Test the destructor
-	{
-		Pokemon squirtle("Squirtle", PokemonType::WATER, 100); // Pokemon will be destroyed at the end of this scope
-	} // Destructor will be called here
-
-
 	//Greet the player and offer choices:
-	Player player("Alicis", charmander);
 	professor.greetPlayer(player);
 	professor.offerPokemonChoices(player);
 
-	//conclude first chaper
-	cout << "Professor Oak: " << player.chosenPokemon.name << " and you, " << player.name << ", are going to be the best of friends!" << endl;
-	cout << "Professor Oak: Your journey begins now! Get ready to explore the vast world of Pokemon!" << endl;
+	//Explain main quest
+	professor.explainMainQuest(player);
 
 	return 0;
 }
