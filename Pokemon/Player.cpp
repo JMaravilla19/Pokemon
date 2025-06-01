@@ -1,11 +1,13 @@
 #include "Player.h"
-#include <iostream>
+#include "PokemonChoice.h"
+#include "PokemonType.h"
 #include "Utility.h"
+#include <iostream>
 
 using namespace std;
 
 	//Default constructor
-	Player() {
+Player ::	Player() {
 		name = "Trainer";
 		chosenPokemon = Pokemon();
 
@@ -13,18 +15,18 @@ using namespace std;
 	}
 
 	//Parametized constructor
-	Player(string p_name, Pokemon p_chosenPokemon ) {
+Player ::	Player(string p_name, Pokemon p_chosenPokemon ) {
 		name = p_name;
 		chosenPokemon = p_chosenPokemon;	
 	}
 
-	Player(const Player& other) {
+Player ::	Player(const Player& other) {
 		name = other.name;
 		chosenPokemon = other.chosenPokemon;
 	}
 
 	//Method to choose pokemon
-	void choosePokemon(int choice) {
+void Player :: choosePokemon(int choice) {
 		switch (static_cast<PokemonChoice>(choice)) {
 		case PokemonChoice::CHARMANDER:
 			chosenPokemon = Pokemon("Charmander", PokemonType::FIRE, 100);

@@ -1,4 +1,4 @@
-//#include "Player.h"
+#include "Player.h"
 #include "Utility.h"
 #include "PokemonType.h"
 #include "PokemonChoice.h"
@@ -9,7 +9,7 @@
 
 using namespace std;
 
-//Class Pokemon
+//Class Pokemon	
 class Pokemon {
 public:
 	string name;
@@ -51,7 +51,7 @@ public:
 	}
 };
 
-#include "Player.h"
+//#include "Player.h"
 
 class ProfessorOak {
 	//Attributes:
