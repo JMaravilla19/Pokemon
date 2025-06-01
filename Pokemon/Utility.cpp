@@ -19,6 +19,7 @@ void Utility :: waitForEnter() {
 	cin.get();
 }
 
+//Function to clear the buffer
 void Utility :: clearInputBuffer() {
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
