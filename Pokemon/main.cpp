@@ -1,57 +1,12 @@
+
 #include "Player.h"
-#include "Utility.h"
-#include "PokemonType.h"
-#include "PokemonChoice.h"
 #include <iostream>
 #include <string>
 #include <limits>
-
+#include "Utility.h"
 
 using namespace std;
 
-//Class Pokemon	
-class Pokemon {
-public:
-	string name;
-	PokemonType type;
-	int health;
-
-	//Default constructor
-	Pokemon() {
-		name = "Unknown" ;
-		type = PokemonType::NORMAL;
-		health = 50;
-	}
-
-	//Parameter constructor
-	Pokemon(string p_name, PokemonType p_type, int p_health) {
-		name = p_name;
-		type = p_type;
-		health = p_health;
-	}
-
-	//Deep copy constructor
-	Pokemon(const Pokemon& other) {
-		name = other.name;
-		type = other.type;
-		health = other.health;
-
-		//cout << "A new Pokemon has been copied from " << other.name << endl;
-	}
-
-	void attack() {
-		//random message to check it works.
-		cout << name << " Attacks with powerful move!" << endl;
-
-	}
-
-	//Destructor of the object
-	~Pokemon() {
-		
-	}
-};
-
-//#include "Player.h"
 
 class ProfessorOak {
 	//Attributes:
