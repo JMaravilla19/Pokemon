@@ -1,5 +1,8 @@
+#include "PokemonType.h"
+#include "PokemonChoice.h"
 #include <iostream>
 #include <string>
+
 
 using namespace std;
 
@@ -17,22 +20,6 @@ void clearConsole() {
 void waitForEnter() {
 	cin.get();
 }
-
-//Enum for First Pokemon Choice
-enum class PokemonChoice {
-	CHARMANDER = 1,
-	BULBASAUR,
-	SQUIRTLE,
-	PIKACHU //Default choice
-};
-
-//Enum Type of Pokemon
-enum class PokemonType {
-	FIRE = 1 ,
-	GRASS,
-	WATER,
-	ELECTRIC
-};
 
 //Class Pokemon
 class Pokemon {
@@ -311,7 +298,7 @@ int main() {
 	ProfessorOak professor = ProfessorOak("Professor Oak");
 	Pokemon p1("Charmander", PokemonType::FIRE, 100);
 	Player player("Ash", p1);
-	
+
 	//Greet the player and offer choices:
 	professor.greetPlayer(player);
 	professor.offerPokemonChoices(player);
@@ -322,4 +309,4 @@ int main() {
 	gameLoop(player);
 
 	return 0;
-#include "header.h"
+}
