@@ -1,7 +1,7 @@
+//#include "Player.h"
 #include "Utility.h"
 #include "PokemonType.h"
 #include "PokemonChoice.h"
-#include "Player.h"
 #include <iostream>
 #include <string>
 #include <limits>
@@ -51,59 +51,7 @@ public:
 	}
 };
 
-
-//class Player {
-//public:
-//	//atributes
-//	string name;
-//	Pokemon chosenPokemon;
-//
-//	//Default constructor
-//	Player() {
-//		name = "Trainer";
-//		chosenPokemon = Pokemon();
-//
-//		//cout << "A new player named '" << name << "' has been created." << endl;
-//	}
-//
-//	//Parametized constructor
-//	Player(string p_name, Pokemon p_chosenPokemon ) {
-//		name = p_name;
-//		chosenPokemon = p_chosenPokemon;	
-//	}
-//
-//	Player(const Player& other) {
-//		name = other.name;
-//		chosenPokemon = other.chosenPokemon;
-//	}
-//
-//	//Method to choose pokemon
-//	void choosePokemon(int choice) {
-//		switch (static_cast<PokemonChoice>(choice)) {
-//		case PokemonChoice::CHARMANDER:
-//			chosenPokemon = Pokemon("Charmander", PokemonType::FIRE, 100);
-//			break;
-//		case PokemonChoice::BULBASAUR:
-//			chosenPokemon = Pokemon("Bulbasaur", PokemonType::GRASS, 100);
-//			break;
-//
-//		case PokemonChoice::SQUIRTLE:
-//			chosenPokemon = Pokemon("Squirtle", PokemonType::WATER, 100);
-//			break;
-//
-//		default:
-//			chosenPokemon = Pokemon("Pikachu", PokemonType::ELECTRIC, 100);
-//			break;
-//		}
-//
-//		Utility::waitForEnter();
-//		cout << "========================================" << endl;
-//		cout << name << " chose " << chosenPokemon.name << endl;
-//		cout << chosenPokemon.name << " is now yours!" << endl;
-//		cout << "========================================" << endl;
-//		Utility::waitForEnter();
-//	}
-//};
+#include "Player.h"
 
 class ProfessorOak {
 	//Attributes:
@@ -286,9 +234,9 @@ void gameLoop(Player& player) {
 
 int main() {
 
+	Pokemon p1("Charmander", PokemonType::FIRE, 100);
 
 	ProfessorOak professor = ProfessorOak("Professor Oak");
-	Pokemon p1("Charmander", PokemonType::FIRE, 100);
 	Player player("Ash", p1);
 
 	//Greet the player and offer choices:
