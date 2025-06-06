@@ -1,7 +1,9 @@
+#pragma once
 #include <string>
 #include "PokemonType.h"
 
 using namespace std;
+
 
 class Pokemon {
 public:

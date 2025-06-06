@@ -1,7 +1,10 @@
 #include "Pokemon.h"
+#include "PokemonType.h"
 #include <iostream>
 
+
 using namespace std;
+
 
 //Default constructor
 Pokemon :: Pokemon() {

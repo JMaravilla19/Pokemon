@@ -1,5 +1,7 @@
 #include "Player.h"
+#include "Pokemon.h"
 #include "PokemonChoice.h"
+#include "PokemonType.h"
 #include "Utility.h"
 #include <iostream>
 
@@ -15,7 +17,7 @@ Player ::	Player() {
 		//cout << "A new player named '" << name << "' has been created." << endl;
 	}
 
-	//Parametized constructor
+	//Parametized constructor	
 Player ::	Player(string p_name, Pokemon p_chosenPokemon ) {
 		name = p_name;
 		chosenPokemon = p_chosenPokemon;	
