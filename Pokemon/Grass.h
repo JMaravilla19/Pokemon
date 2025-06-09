@@ -14,15 +14,14 @@ In structs, the default access level is public, while in classes, it is private.
 #pragma once
 #include <string>
 #include <vector>
-
-class Pokemon;
+#include "Pokemon.h"
 
 struct Grass {
 
 	//Environment like "cave", "Forest", "River"
 	std::string environmentType;
 
-	//List of Wild Pokemon that live in the GRASS.
+	//List of Wild Pokemon that live in the GRASS.	
 	std::vector<Pokemon> wildPokemonList;
 	
 	//Probability of encountering a wild pokemon (out of 100)
