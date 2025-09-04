@@ -1,23 +1,36 @@
 #include "Game.h"
 #include "Player.h"
+#include "PokemonType.h"
 #include "Utility.h"
-
-
+#include "WildEncounterManager.h"
 #include <iostream>
+
 using namespace std;
 
 Game::Game() {
-
+	  forestGrass = {
+		"Forest",
+		{	{"Zubat", PokemonType::POISON, 40},
+			{"Caterpie", PokemonType::BUG, 35},
+			{"Pidgey", PokemonType::NORMAL, 45}
+		},
+		70
+	};
 }
 
 void Game :: gameLoop(Player& player) {
 
+	
 	bool keepPlaying{ true };
 	int choice{ 0 };
 
 
 
 	while (keepPlaying) {
+
+		WildEncounterManager encounterManager;
+		Pokemon encounteredPokemon = encounterManager.getRandomPokemonFromGrass(forestGrass);
+
 		Utility::clearConsole();
 		cout << "============================" << endl;
 		cout << "What to do now - " << player.name << endl;
@@ -34,10 +47,9 @@ void Game :: gameLoop(Player& player) {
 
 		Utility::clearInputBuffer(); // Clear the input buffer
 
-		switch (choice) {
+		switch(choice) {
 		case 1:
-			Utility::clearConsole();
-			cout << "You explore searching pokemons but ALL are gone!! (Actually game is not finished cof...cof...)" << endl;
+			cout << "A wild " << encounteredPokemon.name << " appeared!" << endl;
 			Utility::waitForEnter();
 			break;
 
@@ -78,7 +90,7 @@ void Game :: gameLoop(Player& player) {
 			break;
 		}//switch
 
-		Utility::waitForEnter();
+		//Utility::waitForEnter();
 	}//while
 
 	cout << "Goodbye, " << player.name << "! Thanks for playing!" << endl;

@@ -2,21 +2,18 @@
 #include "Player.h"
 #include "Professor.h"
 #include "Grass.h"
+
+
 #include <iostream>
 #include <limits> // Include this header to use std::numeric_limits
 #include <string>
+#include <cstdlib>
+#include <ctime>
+
 using namespace std;
 
 int main() {
 
-	Grass forestGrass = {
-		"Forest",
-		{	{"Zubat", PokemonType::POISON, 40}, 
-			{"Caterpie", PokemonType::BUG, 35}, 
-			{"Pidgey", PokemonType::NORMAL, 45}
-		},
-		80
-	};
 	
 	// Create the professor and Main Player Objects
 	ProfessorOak professor = ProfessorOak("Professor Oak");

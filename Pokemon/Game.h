@@ -1,8 +1,12 @@
 #pragma once
-
-class Player;
+#include "Grass.h"
+#include "Player.h"
+//class Player;
 
 class Game {
+
+	private:
+		Grass forestGrass;
 
 	public:
 		Game();
